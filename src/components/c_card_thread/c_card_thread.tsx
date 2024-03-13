@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { SHA224 } from "crypto-js";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import type { Thread } from "@/usecases/fetch_threads.ts";
@@ -11,7 +10,7 @@ export type PropsCCardThread = {
 };
 
 export function CCardThread({ thread }: PropsCCardThread) {
-  const thumbnail = `/thumbnails/${SHA224(thread.thumbnail)}.avif`;
+  const thumbnail = `/thumbnails/${thread.saved_thumbnail_file}`;
   return (
     <div
       className={classNames(
@@ -35,6 +34,7 @@ export function CCardThread({ thread }: PropsCCardThread) {
           <div
             className={classNames(
               "media-content",
+              "has-text-left",
               "is-flex",
               "is-flex-direction-column",
               "is-justify-content-space-between",

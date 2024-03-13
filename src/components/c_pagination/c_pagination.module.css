@@ -1,0 +1,11 @@
+.DisplayNone {
+  display: none;
+}
+
+.CursorPointer {
+  cursor: pointer;
+}
+
+.EllipsisFontSize {
+  font-size: 0.7rem;
+}

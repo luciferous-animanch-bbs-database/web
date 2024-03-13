@@ -7,6 +7,7 @@ export type Thread = {
   thumbnail: string;
   unixtime: number;
   datetime: string;
+  saved_thumbnail_file: string;
 };
 
 export type ResponseThreads = {
@@ -21,5 +22,10 @@ export async function fetchThreads(): Promise<ResponseThreads> {
   const array_resp = await resp.arrayBuffer();
   const array = decoder.decode(new Uint8Array(array_resp));
   const text = new TextDecoder().decode(array);
-  return JSON.parse(text);
+  const data: ResponseThreads = JSON.parse(text);
+  console.log({ msg: "fetched data", data: data });
+  return {
+    count: data.count,
+    threads: data.threads.sort((a, b) => b.unixtime - a.unixtime),
+  };
 }

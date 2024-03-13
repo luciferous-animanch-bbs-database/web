@@ -17,7 +17,7 @@ export function App() {
       setStateThreads(resp.threads);
       setGlobalLoading(false);
     } catch (e) {
-      console.log(e);
+      console.log({ msg: "error", err: e });
       alert("データの取得に失敗しました");
     }
   }
